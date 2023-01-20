@@ -217,7 +217,7 @@ class Person implements PersonInterface {
 }
 ```
 
-## Extending a class
+## Extending a class / Subclasses
 
 ```ts
 class Person implements PersonInterface {
@@ -237,4 +237,37 @@ class Employee extends Person {
     this.position = position;
   }
 }
+```
+
+# Generics
+
+```ts
+function getArray<T>(items: T[]): T[] {
+  return new Array().concat(items);
+}
+
+let numArray = getArray<number>([1, 2, 3, 4]);
+let strArray = getArray<string>(["this", "that", "something else"]);
+```
+
+# Adding TS to React
+
+Rename files to .ts or .tsx
+No need to use propTypes
+
+```ts
+export interface Props {
+  title: string;
+  color?: string;
+}
+
+const Header = (props: Props) => {
+  return (
+    <header>
+      <h1 style{{color: props.color ? props.color : "blue"}}>{props.title}</h1>
+    </header>
+  );
+};
+
+export default Header;
 ```
