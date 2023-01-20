@@ -75,13 +75,166 @@ It can be either:
 
 ```
 enum Direction {
-Up,
-Down,
-Left,
-Right
+    Up,
+    Down,
+    Left,
+    Right
 }
 ```
 
 They get numbers assigned, starting from 0.
 You can change them like `Up = 1`, that changes the following numbers too.
 Or set them up with strings `Up = "Up"`
+
+## Objects
+
+```
+const user:{
+    id: number,
+    name: string
+} = {
+    id: 1,
+    name: "John"
+}
+```
+
+There's another notation:
+
+```
+type Useer = {
+    id: number,
+    name: string
+}
+
+const user: User = {
+    id: 1,
+    name: "John"
+}
+```
+
+## Type Assertion
+
+Telling the compiler you want to treat an entity as a different type.
+Example:
+
+```
+let id: any = 1;
+let customerID = <number>id
+
+// or
+
+let cusomerID = id as number;
+```
+
+## Functions
+
+The default type is `any`.
+
+```
+function addNum (x: number, y: number): number {
+    return x + y;
+}
+```
+
+If there's no return value, you can `use: void`
+
+## Interfaces
+
+```
+interface UserInterface {
+    id: number,
+    name: string
+}
+
+const user: UserInterface = {
+    id: 1,
+    name: "Jake"
+}
+```
+
+## Optional variables
+
+`age? : number`
+
+## Read-Only properties
+
+`readonly id: string`
+
+## Function interfaces
+
+```
+interface MathFunc {
+    (x: number, y:number): number
+}
+
+
+const add: MathFunc = (x: number, y: number): number => x + y
+```
+
+## Classes
+
+```js
+class Person {
+  id: number;
+  name: string;
+
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+}
+
+const John = new Person(55, "John");
+```
+
+## Data Modifiers
+
+```js
+class Person {
+    private id: number
+    protected x: number
+    public z: number
+}
+```
+
+## Implementing interface in class
+
+```ts
+interface PersonInterface {
+  id: number;
+  name: string;
+
+  register(): string;
+}
+
+class Person implements PersonInterface {
+  id: number;
+  name: string;
+
+  register() {
+    return "String";
+  }
+}
+```
+
+## Extending a class
+
+```ts
+class Person implements PersonInterface {
+  id: number;
+  name: string;
+
+  register() {
+    return "String";
+  }
+}
+
+class Employee extends Person {
+  position: string;
+
+  constructor(id: number, name: string, position: string) {
+    super(id, name);
+    this.position = position;
+  }
+}
+```
